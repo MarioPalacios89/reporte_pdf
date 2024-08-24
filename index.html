@@ -32,67 +32,53 @@
           alt="Logo Empresa"
           class="w-24 h-auto bg-blue-900"
         />
-        <div class="text-center">
-          <h1 class="text-2xl font-bold text-gray-800">REPORTE DE CALIDAD</h1>
-          <h2 class="text-lg text-gray-600">SISTEMA DE GESTIÓN DE CALIDAD</h2>
+        <div class="text-center ">
+          <h1 class="text-lg md:text-2xl font-bold text-gray-800">REPORTE DE CALIDAD</h1>
+          <h2 class="text-sm md:text-lg text-gray-600">SISTEMA DE GESTIÓN DE CALIDAD</h2>
         </div>
       </div>
 
-      <table class="w-full mb-8">
-        <tr>
-          <th class="text-left font-medium text-gray-700">RC. N°:</th>
-          <td>
-            <input
+      <div class="mb-5">
+        <label class="text-left font-medium text-gray-700">RC. N°:</label>
+        <input
               type="text"
               placeholder="Número de RC"
-              class="w-full border border-gray-300 p-2 rounded"
+              class="w-full border border-gray-300 p-2 rounded mt-2"
               data-tag="%RCN%"
             />
-          </td>
-        </tr>
-        <tr>
-          <th class="text-left font-medium text-gray-700">FECHA:</th>
-          <td>
-            <input
-              type="date"
-              class="w-full border border-gray-300 p-2 rounded"
-              data-tag="%FECHA%"
-            />
-          </td>
-        </tr>
-      </table>
+      </div>
+      
+      <div class="mb-5">
+        <label class="text-left font-medium text-gray-700">FECHA:</label>
+        <input
+        type="date"
+        class="w-full border border-gray-300 p-2 rounded mt-2"
+        data-tag="%FECHA%"
+      />
+      </div>
 
-      <!-- Cliente Section -->
-      <h3 class="text-xl font-semibold text-gray-700 mb-4">Cliente</h3>
-      <table class="w-full mb-8">
-        <tr>
-          <th class="text-left font-medium text-gray-700">CLIENTE:</th>
-          <td>
-            <input
-              type="text"
-              placeholder="Nombre del Cliente"
-              class="w-full border border-gray-300 p-2 rounded"
-              data-tag="%CLIENTE%"
+      <div class="mb-5">
+        <label class="text-left font-medium text-gray-700">ORDEN DE SERVICIO:</label>
+        <input
+        type="text"
+        placeholder="Número de OS"
+        class="w-full border border-gray-300 p-2 rounded mt-2"
+        data-tag="%OS%"
             />
-          </td>
-        </tr>
-        <tr>
-          <th class="text-left font-medium text-gray-700">
-            ORDEN DE SERVICIO:
-          </th>
-          <td>
-            <input
-              type="text"
-              placeholder="Número de OS"
-              class="w-full border border-gray-300 p-2 rounded"
-              data-tag="%OS%"
+      </div>
+
+      <div class="mb-5">
+        <label class="text-left font-medium text-gray-700">CLIENTE:</label>
+        <input
+        type="text"
+        placeholder="Nombre del Cliente"
+        class="w-full border border-gray-300 p-2 rounded mt-2"
+        data-tag="%CLIENTE%"
             />
-          </td>
-        </tr>
-      </table>
+      </div>
 
       <!-- Productos Section -->
-      <h3 class="text-xl font-semibold text-gray-700 mb-4">Productos</h3>
+      <h3 class="text-xl font-semibold text-gray-700 mb-4">PRODUCTOS</h3>
       <table id="itemsContainer" class="w-full mb-4 border border-gray-300">
         <tr class="bg-gray-200">
           <th class="p-2 text-left">Descripción</th>
@@ -106,18 +92,16 @@
         Agregar Producto
       </button>
 
-      <!-- Especificación Section -->
-      <h3 class="text-xl font-semibold text-gray-700 mt-8 mb-4">
-        Especificación
-      </h3>
-      <td>
+      <div class="my-5">
+        <label class="text-left font-medium text-gray-700">ESPECIFICACION:</label>
         <input
-          type="text"
-          placeholder="Detalle de la especificación"
-          class="w-full border border-gray-300 p-2 rounded"
-          data-tag="%ESPECIFICACION%"
-        />
-      </td>
+        type="text"
+        placeholder="Detalle de la especificación"
+        class="w-full border border-gray-300 p-2 rounded mt-2"
+        data-tag="%ESPECIFICACION%"
+            />
+      </div>
+
 
       <!-- Tipo de Inspección Section -->
       <h3 class="text-xl font-semibold text-gray-700 mt-8 mb-4">
@@ -189,25 +173,27 @@
         <input type="checkbox" class="mr-2" data-tag="%END5%" /> Radiografía
       </div>
 
-      <!-- Dureza Obtenida Section -->
-      <h3 class="text-xl font-semibold text-gray-700 mt-8 mb-4">
-        Dureza Obtenida
-      </h3>
-      <input
+      <div class="my-5">
+        <label class="text-left font-medium text-gray-700">DUREZA OBTENIDA:</label>
+        <input
         type="text"
         placeholder="Valor de dureza"
-        class="w-full border border-gray-300 p-2 rounded"
+        class="w-full border border-gray-300 p-2 rounded mt-2"
         data-tag="%DUREZA%"
-      />
+            />
+      </div>
 
-      <!-- Comentarios Section -->
-      <h3 class="text-xl font-semibold text-gray-700 mt-8 mb-4">Comentarios</h3>
-      <textarea
+
+      <div class="mb-5">
+        <label class="text-left font-medium text-gray-700">COMENTARIOS:</label>
+        <textarea
         rows="4"
-        class="w-full border border-gray-300 p-2 rounded"
+        class="w-full border border-gray-300 p-2 rounded mt-2"
         placeholder="Espacio para comentarios adicionales"
         data-tag="%COMENTARIOS%"
       ></textarea>
+      </div>
+
       <button
         onclick="downloadPDF()"
         class="bg-blue-500 text-white px-4 py-2 rounded"
