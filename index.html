@@ -1,192 +1,324 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>REPORTE DE CALIDAD</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.0/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        #marco {
-            width: 100%; /* Asegúrate de que el ancho sea dinámico */
-            max-width: 1000px; /* Ancho máximo para el contenido */
-            margin: auto;
-            padding: 20px;
-        }
-        </style>
-</head>
-<body class="bg-gray-100 p-6">
+      #marco {
+        width: 100%; /* Asegúrate de que el ancho sea dinámico */
+        max-width: 1000px; /* Ancho máximo para el contenido */
+        margin: auto;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 p-6">
     <div class="max-w-4xl mx-auto bg-white p-8 rounded shadow-lg">
-        <!-- Header Section -->
-        <div class="flex justify-between items-center mb-8 ">
-            <img src="img/logo_imr_brandin.png" alt="Logo Empresa" class="w-24 h-auto bg-blue-900">
-            <div class="text-center">
-                <h1 class="text-2xl font-bold text-gray-800">REPORTE DE CALIDAD</h1>
-                <h2 class="text-lg text-gray-600">SISTEMA DE GESTIÓN DE CALIDAD</h2>
-            </div>
+      <!-- Header Section -->
+      <div class="flex justify-between items-center mb-8">
+        <img
+          src="img/logo_imr_brandin.png"
+          alt="Logo Empresa"
+          class="w-24 h-auto bg-blue-900"
+        />
+        <div class="text-center">
+          <h1 class="text-2xl font-bold text-gray-800">REPORTE DE CALIDAD</h1>
+          <h2 class="text-lg text-gray-600">SISTEMA DE GESTIÓN DE CALIDAD</h2>
         </div>
+      </div>
 
-        <table class="w-full mb-8">
-            <tr>
-                <th class="text-left font-medium text-gray-700">RC. N°:</th>
-                <td><input type="text" placeholder="Número de RC" class="w-full border border-gray-300 p-2 rounded"></td>
-            </tr>
-            <tr>
-                <th class="text-left font-medium text-gray-700">FECHA:</th>
-                <td><input type="date" class="w-full border border-gray-300 p-2 rounded"></td>
-            </tr>
-        </table>
+      <table class="w-full mb-8">
+        <tr>
+          <th class="text-left font-medium text-gray-700">RC. N°:</th>
+          <td>
+            <input
+              type="text"
+              placeholder="Número de RC"
+              class="w-full border border-gray-300 p-2 rounded"
+              data-tag="%RCN%"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th class="text-left font-medium text-gray-700">FECHA:</th>
+          <td>
+            <input
+              type="date"
+              class="w-full border border-gray-300 p-2 rounded"
+              data-tag="%FECHA%"
+            />
+          </td>
+        </tr>
+      </table>
 
-        <!-- Cliente Section -->
-        <h3 class="text-xl font-semibold text-gray-700 mb-4">Cliente</h3>
-        <table class="w-full mb-8">
-            <tr>
-                <th class="text-left font-medium text-gray-700">CLIENTE:</th>
-                <td><input type="text" placeholder="Nombre del Cliente" class="w-full border border-gray-300 p-2 rounded"></td>
-            </tr>
-            <tr>
-                <th class="text-left font-medium text-gray-700">ORDEN DE SERVICIO:</th>
-                <td><input type="text" placeholder="Número de OS" class="w-full border border-gray-300 p-2 rounded"></td>
-            </tr>
-        </table>
+      <!-- Cliente Section -->
+      <h3 class="text-xl font-semibold text-gray-700 mb-4">Cliente</h3>
+      <table class="w-full mb-8">
+        <tr>
+          <th class="text-left font-medium text-gray-700">CLIENTE:</th>
+          <td>
+            <input
+              type="text"
+              placeholder="Nombre del Cliente"
+              class="w-full border border-gray-300 p-2 rounded"
+              data-tag="%CLIENTE%"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th class="text-left font-medium text-gray-700">
+            ORDEN DE SERVICIO:
+          </th>
+          <td>
+            <input
+              type="text"
+              placeholder="Número de OS"
+              class="w-full border border-gray-300 p-2 rounded"
+              data-tag="%OS%"
+            />
+          </td>
+        </tr>
+      </table>
 
-        <!-- Productos Section -->
-        <h3 class="text-xl font-semibold text-gray-700 mb-4">Productos</h3>
-        <table id="itemsContainer" class="w-full mb-4 border border-gray-300">
-            <tr class="bg-gray-200">
-                <th class="p-2 text-left">Descripción</th>
-                <th class="p-2 text-left">Cantidad</th>
-            </tr>
-            <tr>
-                <td><input type="text" placeholder="Descripción del producto" class="w-full border border-gray-300 p-2 rounded"></td>
-                <td><input type="number" placeholder="Cantidad" class="w-full border border-gray-300 p-2 rounded"></td>
-            </tr>
-        </table>
-        <button onclick="addItem()" class="bg-blue-500 text-white px-4 py-2 rounded">Agregar Producto</button>
+      <!-- Productos Section -->
+      <h3 class="text-xl font-semibold text-gray-700 mb-4">Productos</h3>
+      <table id="itemsContainer" class="w-full mb-4 border border-gray-300">
+        <tr class="bg-gray-200">
+          <th class="p-2 text-left">Descripción</th>
+          <th class="p-2 text-left">Cantidad</th>
+        </tr>
+      </table>
+      <button
+        onclick="addItem()"
+        class="bg-blue-500 text-white px-4 py-2 rounded"
+      >
+        Agregar Producto
+      </button>
 
-        <!-- Especificación Section -->
-        <h3 class="text-xl font-semibold text-gray-700 mt-8 mb-4">Especificación</h3>
-        <textarea rows="3" class="w-full border border-gray-300 p-2 rounded" placeholder="Detalles de la especificación"></textarea>
+      <!-- Especificación Section -->
+      <h3 class="text-xl font-semibold text-gray-700 mt-8 mb-4">
+        Especificación
+      </h3>
+      <td>
+        <input
+          type="text"
+          placeholder="Detalle de la especificación"
+          class="w-full border border-gray-300 p-2 rounded"
+          data-tag="%ESPECIFICACION%"
+        />
+      </td>
 
-        <!-- Tipo de Inspección Section -->
-        <h3 class="text-xl font-semibold text-gray-700 mt-8 mb-4">Tipo de Inspección</h3>
-        <div><input type="checkbox" class="mr-2"> Inspección en el proceso</div>
-        <div><input type="checkbox" class="mr-2"> Inspección final</div>
+      <!-- Tipo de Inspección Section -->
+      <h3 class="text-xl font-semibold text-gray-700 mt-8 mb-4">
+        Tipo de Inspección
+      </h3>
+      <div>
+        <input type="checkbox" class="mr-2" data-tag="%IP%" /> Inspección en el
+        proceso
+      </div>
+      <div>
+        <input type="checkbox" class="mr-2" data-tag="%IF%" /> Inspección final
+      </div>
 
-        <!-- Composición Química Section -->
-        <h3 class="text-xl font-semibold text-gray-700 mt-8 mb-4">Composición Química</h3>
-        <table id="composicionQuimica" class="w-full mb-4 border border-gray-300">
-            <tr class="bg-gray-200">
-                <th class="p-2 text-left">Elementos</th>
-                <th class="p-2 text-left">Especificado</th>
-                <th class="p-2 text-left">Colada</th>
-            </tr>
-            <tr>
-                <td><input type="text" placeholder="Elemento 1" class="w-full border border-gray-300 p-2 rounded"></td>
-                <td><input type="text" placeholder="Especificado" class="w-full border border-gray-300 p-2 rounded"></td>
-                <td><input type="text" placeholder="Colada" class="w-full border border-gray-300 p-2 rounded"></td>
-            </tr>
-        </table>
-        <button onclick="addRow()" class="bg-blue-500 text-white px-4 py-2 rounded">Agregar Fila</button>
+      <!-- Composición Química Section -->
+      <h3 class="text-xl font-semibold text-gray-700 mt-8 mb-4">
+        Composición Química
+      </h3>
+      <table id="composicionQuimica" class="w-full mb-4 border border-gray-300">
+        <tr class="bg-gray-200">
+          <th class="p-2 text-left">Elementos</th>
+          <th class="p-2 text-left">Especificado</th>
+          <th class="p-2 text-left">Colada</th>
+        </tr>
+      </table>
+      <button
+        onclick="addRow()"
+        class="bg-blue-500 text-white px-4 py-2 rounded"
+      >
+        Agregar Fila
+      </button>
 
-        <!-- Tratamientos Térmicos Section -->
-        <h3 class="text-xl font-semibold text-gray-700 mt-8 mb-4">Tratamientos Térmicos</h3>
-        <div><input type="checkbox" class="mr-2"> As-cast</div>
-        <div><input type="checkbox" class="mr-2"> Recocido</div>
-        <div><input type="checkbox" class="mr-2"> Normalizado</div>
-        <div><input type="checkbox" class="mr-2"> Temple</div>
-        <div><input type="checkbox" class="mr-2"> Revenido</div>
-        <div><input type="checkbox" class="mr-2"> Apagado</div>
+      <!-- Tratamientos Térmicos Section -->
+      <h3 class="text-xl font-semibold text-gray-700 mt-8 mb-4">
+        Tratamientos Térmicos
+      </h3>
+      <div><input type="checkbox" class="mr-2" data-tag="%TT1%" /> As-cast</div>
+      <div>
+        <input type="checkbox" class="mr-2" data-tag="%TT2%" /> Recocido
+      </div>
+      <div>
+        <input type="checkbox" class="mr-2" data-tag="%TT3%" /> Normalizado
+      </div>
+      <div><input type="checkbox" class="mr-2" data-tag="%TT4%" /> Temple</div>
+      <div>
+        <input type="checkbox" class="mr-2" data-tag="%TT5%" /> Revenido
+      </div>
+      <div><input type="checkbox" class="mr-2" data-tag="%TT6%" /> Apagado</div>
 
-        <!-- Ensayos No Destructivos Section -->
-        <h3 class="text-xl font-semibold text-gray-700 mt-8 mb-4">Ensayos No Destructivos</h3>
-        <div><input type="checkbox" class="mr-2"> Inspección visual</div>
-        <div><input type="checkbox" class="mr-2"> Líquidos penetrantes</div>
-        <div><input type="checkbox" class="mr-2"> Partícula magnética</div>
-        <div><input type="checkbox" class="mr-2"> Ultrasonido</div>
-        <div><input type="checkbox" class="mr-2"> Radiografía</div>
+      <!-- Ensayos No Destructivos Section -->
+      <h3 class="text-xl font-semibold text-gray-700 mt-8 mb-4">
+        Ensayos No Destructivos
+      </h3>
+      <div>
+        <input type="checkbox" class="mr-2" data-tag="%END1%" /> Inspección
+        visual
+      </div>
+      <div>
+        <input type="checkbox" class="mr-2" data-tag="%END2%" /> Líquidos
+        penetrantes
+      </div>
+      <div>
+        <input type="checkbox" class="mr-2" data-tag="%END3%" /> Partícula
+        magnética
+      </div>
+      <div>
+        <input type="checkbox" class="mr-2" data-tag="%END4%" /> Ultrasonido
+      </div>
+      <div>
+        <input type="checkbox" class="mr-2" data-tag="%END5%" /> Radiografía
+      </div>
 
-        <!-- Dureza Obtenida Section -->
-        <h3 class="text-xl font-semibold text-gray-700 mt-8 mb-4">Dureza Obtenida</h3>
-        <input type="text" placeholder="Valor de dureza" class="w-full border border-gray-300 p-2 rounded">
+      <!-- Dureza Obtenida Section -->
+      <h3 class="text-xl font-semibold text-gray-700 mt-8 mb-4">
+        Dureza Obtenida
+      </h3>
+      <input
+        type="text"
+        placeholder="Valor de dureza"
+        class="w-full border border-gray-300 p-2 rounded"
+        data-tag="%DUREZA%"
+      />
 
-        <!-- Comentarios Section -->
-        <h3 class="text-xl font-semibold text-gray-700 mt-8 mb-4">Comentarios</h3>
-        <textarea rows="4" class="w-full border border-gray-300 p-2 rounded" placeholder="Espacio para comentarios adicionales"></textarea>
-        <button onclick="downloadPDF()" class="bg-blue-500 text-white px-4 py-2 rounded">Descargar formato</button>
+      <!-- Comentarios Section -->
+      <h3 class="text-xl font-semibold text-gray-700 mt-8 mb-4">Comentarios</h3>
+      <textarea
+        rows="4"
+        class="w-full border border-gray-300 p-2 rounded"
+        placeholder="Espacio para comentarios adicionales"
+        data-tag="%COMENTARIOS%"
+      ></textarea>
+      <button
+        onclick="downloadPDF()"
+        class="bg-blue-500 text-white px-4 py-2 rounded"
+      >
+        Descargar formato
+      </button>
     </div>
 
     <script>
-        function addItem() {
-            var table = document.getElementById("itemsContainer");
-            var newRow = table.insertRow(-1);
-            var cell1 = newRow.insertCell(0);
-            var cell2 = newRow.insertCell(1);
-            cell1.innerHTML = '<input type="text" placeholder="Descripción del producto" class="w-full border border-gray-300 p-2 rounded">';
-            cell2.innerHTML = '<input type="number" placeholder="Cantidad" class="w-full border border-gray-300 p-2 rounded">';
-        }
+      let cItems = 0;
+      let cItemsQuim = 0;
 
-        function addRow() {
-            var table = document.getElementById("composicionQuimica");
-            var newRow = table.insertRow(-1);
-            var cell1 = newRow.insertCell(0);
-            var cell2 = newRow.insertCell(1);
-            var cell3 = newRow.insertCell(2);
-            cell1.innerHTML = '<input type="text" placeholder="Elemento" class="w-full border border-gray-300 p-2 rounded">';
-            cell2.innerHTML = '<input type="text" placeholder="Especificado" class="w-full border border-gray-300 p-2 rounded">';
-            cell3.innerHTML = '<input type="text" placeholder="Colada" class="w-full border border-gray-300 p-2 rounded">';
-        }
+      function addItem() {
+        var table = document.getElementById("itemsContainer");
+        var newRow = table.insertRow(-1);
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        cItems++;
+        cell1.innerHTML =
+          '<input type="text" placeholder="Descripción del producto" class="w-full border border-gray-300 p-2 rounded producto">';
+        cell2.innerHTML =
+          '<input type="number" placeholder="Cantidad" class="w-full border border-gray-300 p-2 rounded producto-valor">';
+      }
 
-        async function fetchHTML() {
+      function addRow() {
+        var table = document.getElementById("composicionQuimica");
+        var newRow = table.insertRow(-1);
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        var cell3 = newRow.insertCell(2);
+        cItemsQuim++;
+        cell1.innerHTML =
+          '<input type="text" placeholder="Elemento" class="w-full border border-gray-300 p-2 rounded elemento">';
+        cell2.innerHTML =
+          '<input type="text" placeholder="Especificado" class="w-full border border-gray-300 p-2 rounded elemento-especificado">';
+        cell3.innerHTML =
+          '<input type="text" placeholder="Colada" class="w-full border border-gray-300 p-2 rounded elemento-colada">';
+      }
+
+      async function fetchHTML() {
         try {
-            let origen=window.location.origin;
-            let url=`${origen}/formato`;
-            const response = await fetch(url, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'text/html',
-                },
-            });
-            if (!response.ok) throw new Error('Network response was not ok');
-            return await response.text();
+          let origen = window.location.origin;
+          let url = `${origen}/formato`;
+          const response = await fetch(url, {
+            method: "GET",
+            headers: {
+              "Content-Type": "text/html",
+            },
+          });
+          if (!response.ok) throw new Error("Network response was not ok");
+          return await response.text();
         } catch (error) {
-            console.error('There was a problem with the fetch operation:', error);
+          console.error("There was a problem with the fetch operation:", error);
         }
-    }
+      }
 
-        async function downloadPDF(){
+      async function downloadPDF() {
+       
+    
 
-            const content = await fetchHTML();
-            if (!content) return;
+        let content = await fetchHTML();
+        if (!content) return;
 
-            //let content=document.getElementById('marco');
+        content=replaceHTML(content);
 
+        //let content=document.getElementById('marco');
 
-            const opt = {
-                margin: [0, 0, 0, 0],
-                filename: 'output.pdf',
-                image: { type: 'jpeg', quality: 1 },
-                html2canvas: { 
-                    scale: 3,  // Aumenta la escala para mejorar la calidad
-                    useCORS: true  // Permite CORS para recursos externos (si es necesario)
-                },
-                jsPDF: { 
-                    unit: 'px', 
-                    orientation: 'portrait', 
-                    format: [1440, 1000]
+        const opt = {
+          margin: [0, 0, 0, 0],
+          filename: "output.pdf",
+          image: { type: "jpeg", quality: 1 },
+          html2canvas: {
+            scale: 3, // Aumenta la escala para mejorar la calidad
+            useCORS: true, // Permite CORS para recursos externos (si es necesario)
+          },
+          jsPDF: {
+            unit: "px",
+            orientation: "portrait",
+            format: [1440, 1000],
+          },
+        };
+
+        // Inicia la conversión y descarga el PDF
+        html2pdf().from(content).set(opt).save();
+      }
+
+      function replaceHTML(datahtml) {
+        let datos = {};
+
+            // Selecciona todos los elementos que tienen el atributo data-tag
+            document.querySelectorAll('[data-tag]').forEach(element => {
+                // Obtiene el valor del atributo data-tag
+                let tag = element.getAttribute('data-tag');
+
+                // Verifica el tipo de elemento para capturar su valor
+                if (element.type === 'checkbox') {
+                    datos[tag] = element.checked;
+                } else {
+                    datos[tag] = element.value;
                 }
-            };
+            });
 
-            // Inicia la conversión y descarga el PDF
-            html2pdf().from(content).set(opt).save();
-            
-        }
+            for (const [tag, valor] of Object.entries(valores)) {
 
-        </script>
-</body>
+                const reemplazo = (typeof valor === "boolean") ? (valor ? "X" : "") : valor;
+        
+                const regex = new RegExp(`%${tag}%`, 'g');
+                datahtml = datahtml.replace(regex, reemplazo || '');
+            }
+        return datahtml;
+      }
+    </script>
+  </body>
 </html>
