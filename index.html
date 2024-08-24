@@ -227,9 +227,9 @@
         var cell2 = newRow.insertCell(1);
         cItems++;
         cell1.innerHTML =
-          '<input type="text" placeholder="Descripción del producto" class="w-full border border-gray-300 p-2 rounded producto">';
+          `<input type="text" id="producto${cItems}" placeholder="Descripción del producto" class="w-full border border-gray-300 p-2 rounded producto">`;
         cell2.innerHTML =
-          '<input type="number" placeholder="Cantidad" class="w-full border border-gray-300 p-2 rounded producto-valor">';
+          `<input type="number" id="producto-valor${cItems}" placeholder="Cantidad" class="w-full border border-gray-300 p-2 rounded producto-valor">`;
       }
 
       function addRow() {
@@ -240,11 +240,11 @@
         var cell3 = newRow.insertCell(2);
         cItemsQuim++;
         cell1.innerHTML =
-          '<input type="text" placeholder="Elemento" class="w-full border border-gray-300 p-2 rounded elemento">';
+          `<input type="text" id="elemento${cItemsQuim}" placeholder="Elemento" class="w-full border border-gray-300 p-2 rounded">`;
         cell2.innerHTML =
-          '<input type="text" placeholder="Especificado" class="w-full border border-gray-300 p-2 rounded elemento-especificado">';
+          `<input type="text" id="elemento-esp${cItemsQuim}" placeholder="Especificado" class="w-full border border-gray-300 p-2 rounded">`;
         cell3.innerHTML =
-          '<input type="text" placeholder="Colada" class="w-full border border-gray-300 p-2 rounded elemento-colada">';
+          `<input type="text" id="elemento-col${cItemsQuim}" placeholder="Colada" class="w-full border border-gray-300 p-2 rounded">`;
       }
 
       async function fetchHTML() {
@@ -318,6 +318,22 @@
                 const regex = new RegExp(`${tag}`, 'g');
                 datahtml = datahtml.replace(regex, reemplazo || '');
             }
+
+            if(cItems){
+                let prod=null;
+                let prodVal=null;
+                let arr=[];
+                for(let x=0;x<cItems;x++){
+                    prod=document.getElementById("producto"+(x+1)).value;
+                    prodVal=document.getElementById("producto-valor"+(x+1)).value;
+                    arr.push(`<div class="grid grid-cols-1 gap-1 divide-x"><div class="flex justify-between items-center mb-2"><p class="text-xs">${prod}</p><div class="w-8 h-8 mr-4 bg-blue-900 text-white font-bold flex justify-center items-center text-xs">${prodVal}</div></div></div>`);
+                }
+                if(arr.length){
+                    let regex2 = new RegExp('%PRODUCTOS%', 'g');
+                    datahtml = datahtml.replace(regex2, arr.join("") || '');
+                }
+            }
+
         return datahtml;
       }
     </script>
