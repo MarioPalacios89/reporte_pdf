@@ -296,8 +296,6 @@
 
       function replaceHTML(datahtml) {
         let datos = {};
-
-        debugger;
             // Selecciona todos los elementos que tienen el atributo data-tag
             document.querySelectorAll('[data-tag]').forEach(element => {
                 // Obtiene el valor del atributo data-tag
@@ -319,10 +317,12 @@
                 datahtml = datahtml.replace(regex, reemplazo || '');
             }
 
+            let arr=[];
+
             if(cItems){
                 let prod=null;
                 let prodVal=null;
-                let arr=[];
+                arr=[];
                 for(let x=0;x<cItems;x++){
                     prod=document.getElementById("producto"+(x+1)).value;
                     prodVal=document.getElementById("producto-valor"+(x+1)).value;
@@ -331,6 +331,23 @@
                 if(arr.length){
                     let regex2 = new RegExp('%PRODUCTOS%', 'g');
                     datahtml = datahtml.replace(regex2, arr.join("") || '');
+                }
+            }
+
+            if(cItemsQuim){
+                let elem=null;
+                let elemesp=null;
+                let elemecol=null;
+                arr=[];
+                for(let x=0;x<cItemsQuim;x++){
+                    elem=document.getElementById("elemento"+(x+1)).value;
+                    elemesp=document.getElementById("elemento-esp"+(x+1)).value;
+                    elemecol=document.getElementById("elemento-col"+(x+1)).value;
+                    arr.push(`<div class="px-4 py-2"><div class="flex items-center justify-between"><h3 class="text-md leading-6 font-medium text-gray-900">% ${elem}</h3></div><div class="flex flex-col"><p class="text-xs font-medium flex text-gray-500 justify-between">Especificado: <span class="text-green-600">${elemesp}</span></p><p class="text-xs font-medium flex text-gray-500 justify-between">Colada: <span class="text-green-600">${elemecol}</span></p></div></div>`);
+                }
+                if(arr.length){
+                    let regex3 = new RegExp('%COMPOSICION%', 'g');
+                    datahtml = datahtml.replace(regex3, arr.join("") || '');
                 }
             }
 
