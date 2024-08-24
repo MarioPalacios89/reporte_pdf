@@ -315,7 +315,7 @@
 
                 const reemplazo = (typeof valor === "boolean") ? (valor ? "X" : "") : valor;
         
-                const regex = new RegExp(`%${tag}%`, 'g');
+                const regex = new RegExp(`${tag}`, 'g');
                 datahtml = datahtml.replace(regex, reemplazo || '');
             }
         return datahtml;
