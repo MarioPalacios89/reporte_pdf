@@ -259,18 +259,17 @@ function replaceHTML(datahtml) {
   }
 
   let arr = [];
+  let regex2 = new RegExp("%PRODUCTOS%", "g");
+  let regex3 = new RegExp("%COMPOSICION%", "g");
 
-  if (products.length) {
     products.forEach((product, index) => {
       arr.push(
         `<div class="grid grid-cols-1 gap-1 divide-x"><div class="flex justify-between items-center mb-2"><p class="text-xs">${product.description}</p><div class="w-8 h-8 mr-4 bg-blue-900 text-white font-bold flex justify-center items-center text-xs">${product.quantity}</div></div></div>`
       );
     });
-    let regex2 = new RegExp("%PRODUCTOS%", "g");
+    
     datahtml = datahtml.replace(regex2, arr.length?arr.join(""):"");
-  }
-
-  if (chemicalCompositions.length) {
+  
     arr = [];
 
     chemicalCompositions.forEach((composition, index) => {
@@ -278,9 +277,9 @@ function replaceHTML(datahtml) {
         `<div class="px-4 py-2"><div class="flex items-center justify-between"><h3 class="text-md leading-6 font-medium text-gray-900">% ${composition.element}</h3></div><div class="flex flex-col"><p class="text-xs font-medium flex text-gray-500 justify-between">Especificado: <span class="text-green-600">${composition.spec}</span></p><p class="text-xs font-medium flex text-gray-500 justify-between">Colada: <span class="text-green-600">${composition.casting}</span></p></div></div>`
       );
     });
-    let regex3 = new RegExp("%COMPOSICION%", "g");
+   
     datahtml = datahtml.replace(regex3, arr.length?arr.join(""):"");
-  }
+
 
   return datahtml;
 }
