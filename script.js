@@ -267,7 +267,7 @@ function replaceHTML(datahtml) {
       );
     });
     let regex2 = new RegExp("%PRODUCTOS%", "g");
-    datahtml = datahtml.replace(regex2, arr.join("") || "");
+    datahtml = datahtml.replace(regex2, arr.length?arr.join(""):"");
   }
 
   if (chemicalCompositions.length) {
@@ -279,7 +279,7 @@ function replaceHTML(datahtml) {
       );
     });
     let regex3 = new RegExp("%COMPOSICION%", "g");
-    datahtml = datahtml.replace(regex3, arr.join("") || "");
+    datahtml = datahtml.replace(regex3, arr.length?arr.join(""):"");
   }
 
   return datahtml;
