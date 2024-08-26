@@ -220,7 +220,19 @@ async function downloadPDF() {
     };
 
     // Inicia la conversión y descarga el PDF
-    await html2pdf().from(content).set(opt).save();
+    await html2pdf()
+    .from(content)    
+    .set(opt)
+    .toPdf()
+    .get('pdf')
+    .then(function (pdf) {
+        var totalPages = pdf.internal.getNumberOfPages();
+
+        for (let i = 1; i <= totalPages; i++) {
+            pdf.text('example', pdf.internal.pageSize.getWidth() - 100, pdf.internal.pageSize.getHeight() - 10);
+        }
+    })
+    .save();
   } catch (error) {
     console.error("Error al generar el PDF:", error);
   } finally {
