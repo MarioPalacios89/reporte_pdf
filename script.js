@@ -232,7 +232,8 @@ async function downloadPDF() {
           const pageSize = pdf.internal.pageSize;
           const pageWidth = pageSize.width ? pageSize.width : pageSize.getWidth();
           const pageHeight = pageSize.height ? pageSize.height : pageSize.getHeight();
-          const footer = "INDUSTRIAS METALURGICAS REUNIDAS S.A.C. - RUC:20562721941 - Dirección: CALLE 4 URB. AGRUP. PACHACAMAC IV ETAP LOTE 22 MZ 7 VILLA EL SALVADOR - LIMA - LIMA"
+          const footer = "INDUSTRIAS METALURGICAS REUNIDAS S.A.C. - RUC:20562721941 - Dirección: CALLE 4 URB. AGRUP. PACHACAMAC IV ETAP LOTE 22 MZ 7 VILLA EL SALVADOR - LIMA - LIMA";
+          pdf.setFontSize(10);
           pdf.text(footer, pageWidth / 2 - (pdf.getTextWidth(footer) / 2), pageHeight - 15, { baseline: 'bottom' });
         }
     })
